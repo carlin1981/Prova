@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Coletas</title>
+</head>
+<body>
+    <h1>Lista de Coletas</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Unidade</th>
+                <th>Paciente</th>
+                <th>Exame</th>
+                <th>Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="coleta : ${coletas}">
+                <td th:text="${coleta.id}"></td>
+                <td th:text="${coleta.unidade.nome}"></td>
+                <td th:text="${coleta.paciente.nome}"></td>
+                <td th:text="${coleta.exame.tipo}"></td>
+                <td th:text="${coleta.data}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

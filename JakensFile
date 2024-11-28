@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    // Construir o JAR do projeto
+                    sh 'mvn clean package -DskipTests'
+                }
+            }
+        }
+        stage('Docker Build & Push') {
+            steps {
+                script {
+                    // Construir a imagem Docker
+                    sh 'docker build -t carlos-receptor .'
+                    // Subir para o Docker Hub ou repositório de imagens
+                    sh 'docker push carlos-receptor'
+                }
+            }
+        }
+    }
+}
